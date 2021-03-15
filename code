@@ -1,0 +1,279 @@
+# -*- coding: utf-8 -*-
+
+# Form implementation generated from reading ui file 'phonebook.ui'
+#
+# Created by: PyQt5 UI code generator 5.15.2
+#
+
+
+
+from PyQt5 import QtCore, QtGui, QtWidgets
+import pymysql
+
+class Ui_MainWindow(object):
+    def setupUi(self, MainWindow):
+        MainWindow.setObjectName("MainWindow")
+        MainWindow.resize(442, 471)
+        MainWindow.setStyleSheet("background-color: rgb(85, 85, 127);")
+        self.centralwidget = QtWidgets.QWidget(MainWindow)
+        self.centralwidget.setObjectName("centralwidget")
+        self.tableview = QtWidgets.QTableWidget(self.centralwidget)
+        self.tableview.setGeometry(QtCore.QRect(10, 200, 421, 241))
+        self.tableview.viewport().setProperty("cursor", QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.tableview.setLayoutDirection(QtCore.Qt.RightToLeft)
+        self.tableview.setStyleSheet("color: rgb(0, 170, 255);")
+        self.tableview.setObjectName("tableview")
+        self.tableview.setColumnCount(4)
+        self.tableview.setRowCount(0)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableview.setHorizontalHeaderItem(0, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableview.setHorizontalHeaderItem(1, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableview.setHorizontalHeaderItem(2, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableview.setHorizontalHeaderItem(3, item)
+        self.nameline = QtWidgets.QLineEdit(self.centralwidget)
+        self.nameline.setGeometry(QtCore.QRect(300, 40, 130, 25))
+        self.nameline.setLayoutDirection(QtCore.Qt.RightToLeft)
+        self.nameline.setObjectName("nameline")
+        self.familyline = QtWidgets.QLineEdit(self.centralwidget)
+        self.familyline.setGeometry(QtCore.QRect(10, 40, 130, 25))
+        self.familyline.setObjectName("familyline")
+        self.numberline = QtWidgets.QLineEdit(self.centralwidget)
+        self.numberline.setGeometry(QtCore.QRect(300, 110, 130, 25))
+        self.numberline.setObjectName("numberline")
+        self.namelabel = QtWidgets.QLabel(self.centralwidget)
+        self.namelabel.setGeometry(QtCore.QRect(300, 10, 130, 20))
+        self.namelabel.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.namelabel.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.namelabel.setObjectName("namelabel")
+        self.familylabel = QtWidgets.QLabel(self.centralwidget)
+        self.familylabel.setGeometry(QtCore.QRect(10, 10, 130, 20))
+        self.familylabel.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.familylabel.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.familylabel.setObjectName("familylabel")
+        self.numberlabel = QtWidgets.QLabel(self.centralwidget)
+        self.numberlabel.setGeometry(QtCore.QRect(300, 80, 130, 20))
+        self.numberlabel.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.numberlabel.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.numberlabel.setObjectName("nunberlabel")
+        self.addbtn = QtWidgets.QPushButton(self.centralwidget)
+        self.addbtn.setGeometry(QtCore.QRect(10, 160, 91, 25))
+        self.addbtn.setObjectName("addbtn")
+        self.editbtn = QtWidgets.QPushButton(self.centralwidget)
+        self.editbtn.setGeometry(QtCore.QRect(110, 160, 81, 25))
+        self.editbtn.setObjectName("editbtn")
+        self.deletbtn = QtWidgets.QPushButton(self.centralwidget)
+        self.deletbtn.setGeometry(QtCore.QRect(199, 160, 81, 25))
+        self.deletbtn.setObjectName("deletbtn")
+        self.searchfamily = QtWidgets.QPushButton(self.centralwidget)
+        self.searchfamily.setGeometry(QtCore.QRect(290, 160, 141, 25))
+        self.searchfamily.setObjectName("searchfamily")
+        self.homeline = QtWidgets.QLineEdit(self.centralwidget)
+        self.homeline.setGeometry(QtCore.QRect(10, 110, 130, 25))
+        self.homeline.setObjectName("homeline")
+        self.homelabel = QtWidgets.QLabel(self.centralwidget)
+        self.homelabel.setGeometry(QtCore.QRect(10, 80, 130, 20))
+        self.homelabel.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.homelabel.setObjectName("homelabel")
+        MainWindow.setCentralWidget(self.centralwidget)
+        self.statusbar = QtWidgets.QStatusBar(MainWindow)
+        self.statusbar.setObjectName("statusbar")
+        MainWindow.setStatusBar(self.statusbar)
+
+        self.retranslateUi(MainWindow)
+        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+    def retranslateUi(self, MainWindow):
+        _translate = QtCore.QCoreApplication.translate
+        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        item = self.tableview.horizontalHeaderItem(0)
+        item.setText(_translate("MainWindow", "نام"))
+        item = self.tableview.horizontalHeaderItem(1)
+        item.setText(_translate("MainWindow", "نام خانوادگی"))
+        item = self.tableview.horizontalHeaderItem(2)
+        item.setText(_translate("MainWindow", "موبایل"))
+        item = self.tableview.horizontalHeaderItem(3)
+        item.setText(_translate("MainWindow", "منزل"))
+        self.namelabel.setText(_translate("MainWindow", "نام"))
+        self.familylabel.setText(_translate("MainWindow", "نام خانوادگی"))
+        self.numberlabel.setText(_translate("MainWindow", "موبایل"))
+        self.addbtn.setText(_translate("MainWindow", "اضافه کردن"))
+        self.editbtn.setText(_translate("MainWindow", "ویرایش"))
+        self.deletbtn.setText(_translate("MainWindow", "حذف"))
+        self.searchfamily.setText(_translate("MainWindow", "جستوجو نام خانوادگی"))
+        self.homelabel.setText(_translate("MainWindow", "منزل"))
+        
+        self.fill()
+        
+        self.addbtn.clicked.connect(self.adding)
+        self.editbtn.clicked.connect(self.editing)
+        self.searchfamily.clicked.connect(self.searching)
+        self.deletbtn.clicked.connect(self.deleting)
+        self.tableview.clicked.connect(self.rowview)
+        
+        
+    def adding(self):
+        # insert data in database
+        mydb = pymysql.connect(host = "localhost",user="root",passwd="",db="phonebook")
+        mydb_cursor = mydb.cursor()
+        
+        query = "INSERT INTO phone1 (name,family,cell,home) VALUES (%s,%s,%s,%s)"
+        rowtuple = (self.nameline.text(),self.familyline.text(),self.numberline.text(),self.homeline.text())
+        
+        mydb_cursor.execute(query, rowtuple)
+        mydb.commit()
+        mydb.close()
+        
+        mydb = pymysql.connect(host="localhost",user="root",passwd="",db="phonebook")
+        mydb_cursor = mydb.cursor()
+        mydb_cursor.execute("SELECT name, family, cell, home FROM phone1")
+        data = mydb_cursor.fetchall()
+        
+        #filling table
+        
+        for row1, row_data in enumerate(data):
+            self.tableview.insertRow(row1)
+            for column, item in enumerate(row_data):
+                self.tableview.setItem(row1, column, QtWidgets.QTableWidgetItem(str(item)))
+                
+        mydb.commit()
+        mydb.close()
+        
+        self.nameline.setText("")
+        self.familyline.setText("")
+        self.homeline.setText("")
+        self.numberline.setText("")
+        
+    def editing(self):
+        number_temp = self.numberline.text()
+        home_temp = self.homeline.text()
+        name_temp = self.nameline.text()
+        family_temp = self.familyline.text()
+        
+        mydb = pymysql.connect(host="localhost",user="root",passwd="",db="phonebook")
+        mydb_cursor = mydb.cursor()
+        mydb_cursor.execute("update phone1 set name=(%s), family=(%s),cell=(%s), home=(%s) where cell=(%s)", (self.nameline.text(),self.familyline.text(),self.numberline.text(),self.homeline.text(),number_temp))
+        
+        mydb.commit()
+        mydb.close()
+        
+        mydb = pymysql.connect(host="localhost",user="root",passwd="",db="phonebook")
+        mydb_cursor = mydb.cursor()
+        mydb_cursor.execute("SELECT name, family, cell, home FROM phone1")
+        data = mydb_cursor.fetchall()
+        
+        #filling table
+        
+        for row1, row_data in enumerate(data):
+            self.tableview.insertRow(row1)
+            for column, item in enumerate(row_data):
+                self.tableview.setItem(row1, column, QtWidgets.QTableWidgetItem(str(item)))
+                
+        mydb.commit()
+        mydb.close()
+        
+        
+    def searching(self):
+        family_temp = self.familyline.text()
+        if family_temp == "" :
+            mydb = pymysql.connect(host="localhost",user="root",passwd="",db="phonebook")
+            mydb_cursor = mydb.cursor()
+            mydb_cursor.execute("SELECT name, family, cell, home FROM phone1")
+            data = mydb_cursor.fetchall()
+        
+            #filling table
+            
+            for row1, row_data in enumerate(data):
+                self.tableview.insertRow(row1)
+                for column, item in enumerate(row_data):
+                    self.tableview.setItem(row1, column, QtWidgets.QTableWidgetItem(str(item)))
+                
+            mydb.commit()
+            mydb.close()
+            
+        elif family_temp == self.familyline.text():
+            mydb = pymysql.connect(host="localhost",user="root",passwd="",db="phonebook")
+            mydb_cursor = mydb.cursor()
+            mydb_cursor.execute("SELECT name, family, cell, home FROM phone1 where family=(%s)", family_temp)
+            data = mydb_cursor.fetchall()
+        
+            #filling table
+            
+            for row1, row_data in enumerate(data):
+                self.tableview.insertRow(row1)
+                for column, item in enumerate(row_data):
+                    self.tableview.setItem(row1, column, QtWidgets.QTableWidgetItem(str(item)))
+                
+            mydb.commit()
+            mydb.close()
+            
+    def deleting(self):
+        mydb = pymysql.connect(host="localhost",user="root",passwd="",db="phonebook")
+        mydb_cursor = mydb.cursor()
+        mydb_cursor.execute("DELETE FROM phone1 WHERE cell=(%s)", self.numberline.text())
+        mydb.commit()
+        mydb.close()
+        
+        mydb = pymysql.connect(host="localhost",user="root",passwd="",db="phonebook")
+        mydb_cursor = mydb.cursor()
+        mydb_cursor.execute("SELECT name, family, cell, home FROM phone1")
+        data = mydb_cursor.fetchall()
+        
+        #filling table
+        
+        for row1, row_data in enumerate(data):
+            self.tableview.insertRow(row1)
+            for column, item in enumerate(row_data):
+                self.tableview.setItem(row1, column, QtWidgets.QTableWidgetItem(str(item)))
+                
+        mydb.commit()
+        mydb.close()
+        
+        self.nameline.setText("")
+        self.familyline.setText("")
+        self.homeline.setText("")
+        self.numberline.setText("")
+        
+    def rowview(self):
+        indice = self.tableview.currentRow()
+        name = self.tableview.item(indice,0).text()
+        family = self.tableview.item(indice,1).text()
+        cellphone = self.tableview.item(indice,2).text()
+        home = self.tableview.item(indice,3).text()
+        
+        self.nameline.setText(name)
+        self.familyline.setText(family)
+        self.numberline.setText(cellphone)
+        self.homeline.setText(home)
+        
+    def fill(self):
+        #connet to database
+        mydb = pymysql.connect(host="localhost",user="root",passwd="",db="phonebook")
+        mydb_cursor = mydb.cursor()
+        mydb_cursor.execute("SELECT name, family, cell, home FROM phone1")
+        data = mydb_cursor.fetchall()
+        
+        #filling table
+       
+        for row1, row_data in enumerate(data):
+            self.tableview.insertRow(row1)
+            for column, item in enumerate(row_data):
+                self.tableview.setItem(row1, column, QtWidgets.QTableWidgetItem(str(item)))
+                
+        mydb.commit()
+        mydb.close()
+        
+        
+        
+        
+    
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    MainWindow = QtWidgets.QMainWindow()
+    ui = Ui_MainWindow()
+    ui.setupUi(MainWindow)
+    MainWindow.show()
+    sys.exit(app.exec_())
